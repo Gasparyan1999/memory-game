@@ -1,22 +1,24 @@
 import { v4 as uuidv4 } from "uuid";
 import type { ICard } from "../../types";
 
-export const memoryGameApi = {
-  getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  },
+const COLORS = [
+  "#FF5733",
+  "#33FF57",
+  "#3357FF",
+  "#FF33A8",
+  "#FF8F33",
+  "#33FFF6",
+  "#8D33FF",
+  "#FFD433",
+];
 
+export const memoryGameApi = {
   generateUniqueColor(excludedColors: string[]) {
-    let newColor = this.getRandomColor();
-    while (excludedColors.includes(newColor)) {
-      newColor = this.getRandomColor();
+    const available = COLORS.filter((c) => !excludedColors.includes(c));
+    if (available.length === 0) {
+      throw new Error("No more unique colors available");
     }
-    return newColor;
+    return available[Math.floor(Math.random() * available.length)];
   },
 
   shuffleCards(cards: ICard[]): ICard[] {
