@@ -1,7 +1,7 @@
-import { MemoryGame } from "./components"
+import { MemoryGame } from "./components";
 
 function App() {
-  return  <MemoryGame/>
+  return <MemoryGame />;
 }
 
-export default App
+export default App;

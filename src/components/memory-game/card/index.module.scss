@@ -1,14 +1,37 @@
-.cardContainer {
-  background-color: #f0f0f0;
+.cardWrapper {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.cardInner {
   aspect-ratio: 1;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  border-radius: 8px;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s;
+}
 
-  &:hover {
-    transform: scale(1.05);
-  }
+.cardFront {
+  background-color: #c4c4c4;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  transition: background-color 0.6s;
 }
