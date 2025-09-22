@@ -1,4 +1,4 @@
-import { useMemoryGame } from "../../hooks/use-memory-game";
+import { useMemoryGame } from "../../hooks";
 import { Card } from "./card";
 import styles from "./index.module.scss";
 
